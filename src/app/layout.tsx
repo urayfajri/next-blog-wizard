@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Next Blog Wizard",
-  description: "Multi-step blog creation wizard (TypeScript + Tailwind)",
+  description: "Multi-step blog creation wizard",
 };
 
 export default function RootLayout({
@@ -21,9 +21,6 @@ export default function RootLayout({
             <nav className="flex gap-3">
               <Link href="/" className="text-sm text-slate-700">
                 Home
-              </Link>
-              <Link href="/create" className="text-sm text-slate-700">
-                Create
               </Link>
             </nav>
           </header>

@@ -1,19 +1,25 @@
-export default function ReviewList({ data }: { data: any }) {
+import { DraftPost } from "@/lib/types";
+
+type Props = {
+  data: DraftPost;
+};
+
+export default function ReviewList({ data }: Props) {
   const rows = [
-    ['Title', data.title],
-    ['Author', data.author],
-    ['Summary', data.summary],
-    ['Category', data.category],
-    ['Content', data.content],
-  ]
+    ["Title", data.title],
+    ["Author", data.author],
+    ["Summary", data.summary],
+    ["Category", data.category],
+    ["Content", data.content],
+  ];
   return (
-    <div className='space-y-2'>
-      {rows.map(([k,v])=> (
-        <div key={k} className='card'>
-          <div className='text-sm text-slate-600 font-medium'>{k}</div>
-          <div className='mt-1'>{v || '—'}</div>
+    <div className="space-y-2">
+      {rows.map(([k, v]) => (
+        <div key={k} className="card">
+          <div className="text-sm text-slate-600 font-medium">{k}</div>
+          <div className="mt-1">{v || "—"}</div>
         </div>
       ))}
     </div>
-  )
+  );
 }
