@@ -14,17 +14,32 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <div className="container">
-          <header className="flex items-center justify-between mb-6">
-            <div className="text-xl font-semibold">Next Blog Wizard</div>
-            <nav className="flex gap-3">
-              <Link href="/" className="text-sm text-slate-700">
+      <body className="bg-gray-50 text-gray-800">
+        <div className="container mx-auto max-w-5xl px-6">
+          {/* Header */}
+          <header className="flex items-center justify-between py-4 border-b border-gray-200 mb-8">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-bold text-blue-600">
+                Next Blog Wizard
+              </span>
+            </div>
+            <nav>
+              <Link
+                href="/"
+                className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+              >
                 Home
               </Link>
             </nav>
           </header>
-          <main>{children}</main>
+
+          {/* Main Content */}
+          <main className="min-h-[70vh]">{children}</main>
+
+          {/* Footer */}
+          <footer className="border-t border-gray-200 mt-10 py-6 text-center text-sm text-gray-500">
+            © {new Date().getFullYear()} Uray Widiansyah
+          </footer>
         </div>
       </body>
     </html>

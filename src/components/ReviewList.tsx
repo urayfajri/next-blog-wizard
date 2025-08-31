@@ -12,12 +12,23 @@ export default function ReviewList({ data }: Props) {
     ["Category", data.category],
     ["Content", data.content],
   ];
+
   return (
-    <div className="space-y-2">
+    <div className="grid gap-4">
       {rows.map(([k, v]) => (
-        <div key={k} className="card">
-          <div className="text-sm text-slate-600 font-medium">{k}</div>
-          <div className="mt-1">{v || "—"}</div>
+        <div
+          key={k}
+          className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            {k}
+          </div>
+          <div
+            className="mt-2 text-sm text-slate-700 leading-relaxed line-clamp-3"
+            title={v || "—"}
+          >
+            {v || "—"}
+          </div>
         </div>
       ))}
     </div>
