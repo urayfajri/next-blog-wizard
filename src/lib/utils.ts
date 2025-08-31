@@ -10,7 +10,6 @@ export function uid() {
 
 export function formatDate(date: string | number | Date): string {
   const d = new Date(date);
-  // Pastikan locale fix (misalnya 'en-US') biar SSR & client sama
   return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "short",

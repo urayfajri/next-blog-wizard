@@ -5,6 +5,7 @@ type Props = {
   onChange: (v: string) => void;
   placeholder?: string;
   error?: string;
+  required?: boolean;
 };
 
 export default function TextAreaField({
@@ -14,15 +15,18 @@ export default function TextAreaField({
   onChange,
   placeholder,
   error,
+  required,
 }: Props) {
   return (
     <div className="mb-3">
       <label className="label" htmlFor={name}>
-        {label}
+        {label} {required && <span className="text-red-600">*</span>}
       </label>
       <textarea
         id={name}
-        className="textarea"
+        className={`textarea ${
+          error ? "border-red-600 focus:ring-red-600" : ""
+        }`}
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}

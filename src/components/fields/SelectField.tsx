@@ -8,6 +8,7 @@ type Props = {
   options: Option[];
   placeholder?: string;
   error?: string;
+  required?: boolean;
 };
 
 export default function SelectField({
@@ -18,15 +19,16 @@ export default function SelectField({
   options,
   placeholder,
   error,
+  required,
 }: Props) {
   return (
     <div className="mb-3">
       <label className="label" htmlFor={name}>
-        {label}
+        {label} {required && <span className="text-red-600">*</span>}
       </label>
       <select
         id={name}
-        className="input"
+        className={`input ${error ? "border-red-600 focus:ring-red-600" : ""}`}
         value={value}
         onChange={(e) => onChange(e.target.value)}
       >

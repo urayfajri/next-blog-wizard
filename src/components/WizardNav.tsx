@@ -1,6 +1,5 @@
 type Props = {
   canBack: boolean;
-  canNext: boolean;
   onBack: () => void;
   onNext: () => void;
   onSubmit?: () => void;
@@ -9,7 +8,6 @@ type Props = {
 
 export default function WizardNav({
   canBack,
-  canNext,
   onBack,
   onNext,
   onSubmit,
@@ -21,11 +19,11 @@ export default function WizardNav({
         Back
       </button>
       {!isLast ? (
-        <button className="button" disabled={!canNext} onClick={onNext}>
+        <button className="button" onClick={onNext}>
           Next
         </button>
       ) : (
-        <button className="button" disabled={!canNext} onClick={onSubmit}>
+        <button className="button" onClick={onSubmit}>
           Submit
         </button>
       )}

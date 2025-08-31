@@ -5,6 +5,7 @@ type Props = {
   onChange: (v: string) => void;
   placeholder?: string;
   error?: string;
+  required?: boolean;
 };
 
 export default function InputField({
@@ -14,15 +15,16 @@ export default function InputField({
   onChange,
   placeholder,
   error,
+  required,
 }: Props) {
   return (
     <div className="mb-3">
       <label className="label" htmlFor={name}>
-        {label}
+        {label} {required && <span className="text-red-600">*</span>}
       </label>
       <input
         id={name}
-        className="input"
+        className={`input ${error ? "border-red-600 focus:ring-red-600" : ""}`}
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}

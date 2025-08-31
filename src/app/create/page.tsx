@@ -12,21 +12,19 @@ import { addPost } from "@/lib/posts";
 import { useRouter } from "next/navigation";
 
 function WizardInner() {
-  const { state, dispatch } = useFormCtx();
+  const { state, dispatch, setErrors } = useFormCtx();
   const router = useRouter();
   const errors = validateStep(state.step, state);
   const hasErrors = Object.keys(errors).length > 0;
 
   const goNext = () => {
-    if (!hasErrors) dispatch({ type: "NEXT" });
+    if (!hasErrors) {
+      dispatch({ type: "NEXT" });
+    } else {
+      setErrors(validateStep(state.step, state));
+    }
   };
   const submit = () => {
-    const allErrors = {
-      ...validateStep(0, state),
-      ...validateStep(1, state),
-      ...validateStep(2, state),
-    };
-    if (Object.keys(allErrors).length > 0) return;
     const saved = addPost({
       title: state.title,
       author: state.author,
@@ -48,7 +46,6 @@ function WizardInner() {
       </div>
       <WizardNav
         canBack={state.step > 0}
-        canNext={!hasErrors}
         onBack={() => dispatch({ type: "BACK" })}
         onNext={goNext}
         onSubmit={submit}
