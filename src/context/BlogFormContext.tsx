@@ -6,6 +6,15 @@ type Errors = Partial<Record<keyof DraftPost, string>>;
 
 type FormState = DraftPost & { step: number; errors: Errors };
 
+type FormContextType = {
+  state: FormState;
+  dispatch: React.Dispatch<Action>;
+  set: (field: keyof DraftPost) => (value: string) => void;
+  setError: (field: keyof DraftPost, message: string) => void;
+  setErrors: (errors: Partial<Record<keyof DraftPost, string>>) => void;
+  clearError: (field: keyof DraftPost) => void;
+};
+
 type Action =
   | { type: "SET_FIELD"; field: keyof DraftPost; value: string }
   | { type: "NEXT" }
@@ -59,7 +68,7 @@ function reducer(state: FormState, action: Action): FormState {
   }
 }
 
-const Ctx = createContext<any>(null);
+const Ctx = createContext<FormContextType | null>(null);
 
 export function BlogFormProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initial);
