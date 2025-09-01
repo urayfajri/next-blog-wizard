@@ -7,6 +7,7 @@ import Loading from "@/components/Loading";
 import NotFound from "@/components/NotFound";
 import { categoryColors } from "@/constants/categoryColors";
 import { BlogPost } from "@/lib/types";
+import Link from "next/link";
 
 export default function Page() {
   const params = useParams();
@@ -28,8 +29,7 @@ export default function Page() {
 
   return (
     <article className="space-y-6">
-      {/* Header Info */}
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-sm text-slate-500">
           <span>{post.createdAt ? formatDate(post.createdAt) : ""}</span>
           <span>•</span>
@@ -42,11 +42,12 @@ export default function Page() {
             {post.category}
           </span>
         </div>
-
-        <div className="text-sm text-slate-600 break-words whitespace-pre-wrap flex flex-col items-start md:items-end">
-          <span>👤 Written by</span>
-          <span className="font-bold text-lg md:text-right">{post.author}</span>
-        </div>
+        <Link
+          href="/"
+          className="px-4 py-2 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
+        >
+          ← Back
+        </Link>
       </div>
 
       {/* Title */}
@@ -55,6 +56,14 @@ export default function Page() {
           {post.title}
         </h1>
       </header>
+
+      {/* Header Info */}
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <div className="text-sm text-slate-600 break-words whitespace-pre-wrap flex flex-col items-start">
+          <span>👤 Written by</span>
+          <span className="font-bold text-lg">{post.author}</span>
+        </div>
+      </div>
 
       {/* Summary */}
       {post.summary && (

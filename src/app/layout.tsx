@@ -1,6 +1,8 @@
 import "@/styles/globals.css";
 import React from "react";
 import Link from "next/link";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata = {
   title: "Next Blog Wizard",
@@ -35,6 +37,17 @@ export default function RootLayout({
 
           {/* Main Content */}
           <main className="min-h-[70vh]">{children}</main>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
 
           {/* Footer */}
           <footer className="border-t border-gray-200 mt-10 py-6 text-center text-sm text-gray-500">

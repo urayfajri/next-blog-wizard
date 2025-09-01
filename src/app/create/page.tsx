@@ -10,6 +10,7 @@ import Step4 from "@/components/steps/Step4";
 import { validateStep } from "@/lib/utils";
 import { addPost } from "@/lib/posts";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 function WizardInner() {
   const { state, dispatch, setErrors } = useFormCtx();
@@ -33,7 +34,8 @@ function WizardInner() {
       content: state.content,
     });
     dispatch({ type: "RESET" });
-    router.push(`/posts/${saved.id}`);
+    toast.success("New post added successfully!");
+    router.push(`/`);
   };
 
   const Step = [Step1, Step2, Step3, Step4][state.step];
