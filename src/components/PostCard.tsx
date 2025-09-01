@@ -17,7 +17,7 @@ export default function PostCard({ post }: Props) {
       <div>
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
           <span
-            className={`px-2 py-0.5 rounded-full font-medium ${
+            className={`px-2 py-0.5 rounded-full font-medium bg-blue-50 ${
               categoryColors[post.category.toLowerCase()] ||
               "bg-gray-100 text-gray-600"
             }`}
@@ -49,11 +49,10 @@ export default function PostCard({ post }: Props) {
             overflow: "hidden",
           }}
         >
-          {post.summary}
+          {truncateByChars(post.summary, 50)}
         </p>
       </div>
 
-      {/* ini akan otomatis di bawah container */}
       <div className="grid grid-cols-2 items-center text-xs text-slate-500 mt-3">
         <span className="italic">{truncateByChars(post.author, 10)}</span>
         <span className="justify-self-end text-blue-600 font-medium">

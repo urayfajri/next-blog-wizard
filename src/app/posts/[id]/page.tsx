@@ -28,7 +28,7 @@ export default function Page() {
   return (
     <article className="space-y-6">
       {/* Header Info */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         <div className="flex items-center gap-2 text-sm text-slate-500">
           <span>{post.createdAt ? formatDate(post.createdAt) : ""}</span>
           <span>•</span>
@@ -41,9 +41,10 @@ export default function Page() {
             {post.category}
           </span>
         </div>
-        <div className="text-sm text-slate-600 break-words whitespace-pre-wrap flex flex-col items-end">
+
+        <div className="text-sm text-slate-600 break-words whitespace-pre-wrap flex flex-col items-start md:items-end">
           <span>👤 Written by</span>
-          <span className="font-bold text-lg">{post.author}</span>
+          <span className="font-bold text-lg md:text-right">{post.author}</span>
         </div>
       </div>
 

@@ -19,9 +19,9 @@ export default function RootLayout({
           {/* Header */}
           <header className="flex items-center justify-between py-4 border-b border-gray-200 mb-8">
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-blue-600">
+              <Link href="/" className="text-2xl font-bold text-blue-600">
                 Next Blog Wizard
-              </span>
+              </Link>
             </div>
             <nav>
               <Link
