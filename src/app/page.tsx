@@ -3,9 +3,10 @@ import React from "react";
 import Link from "next/link";
 import { listPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
+import { BlogPost } from "@/lib/types";
 
 export default function Page() {
-  const [posts, setPosts] = React.useState<any[]>([]);
+  const [posts, setPosts] = React.useState<BlogPost[]>([]);
 
   React.useEffect(() => {
     setPosts(listPosts());

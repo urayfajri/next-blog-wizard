@@ -6,12 +6,13 @@ import { formatDate } from "@/lib/utils";
 import Loading from "@/components/Loading";
 import NotFound from "@/components/NotFound";
 import { categoryColors } from "@/constants/categoryColors";
+import { BlogPost } from "@/lib/types";
 
 export default function Page() {
   const params = useParams();
   const id = String(params?.id || "");
 
-  const [post, setPost] = React.useState<any>(null);
+  const [post, setPost] = React.useState<BlogPost | null>(null);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
